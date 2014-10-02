@@ -13,10 +13,13 @@ body {
 }
 
 header {
+	font-size:70px;
+	font-color:white;
 	
 }
 
 footer {
+	font-color:white;
 	font-style: italic;
 	font-size: 90%;
 }
