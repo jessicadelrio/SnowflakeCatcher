@@ -1,5 +1,21 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class SnowflakeCatcher extends PApplet {
+
 SnowFlake [] fall;
-void setup()
+public void setup()
 { 
   //your code here
   size(500,500);
@@ -12,7 +28,7 @@ void setup()
 
   }
 
-void draw()
+public void draw()
 {
   //your code here
  //background(0,0,0);
@@ -35,7 +51,7 @@ void draw()
 }
 
 
-void mouseDragged()
+public void mouseDragged()
 {
   //your code here
   for(int i = 0; i < fall.length; i++){
@@ -45,7 +61,7 @@ void mouseDragged()
     
   }
 }
-void keyPressed(){
+public void keyPressed(){
   for(int i = 0; i < fall.length; i++){
     fall[i].start();
     fall[i].lookDown();
@@ -65,7 +81,7 @@ class SnowFlake
     myY = (int)(Math.random()*501);
     isMoving = true;
   }
-  void show()
+  public void show()
   {
     //your code here
 
@@ -73,7 +89,7 @@ class SnowFlake
     fill(255, 0, 128);
     ellipse(myX,myY,15,15);
   }
-  void lookDown()
+  public void lookDown()
   {
     //your code here
     if((myY <= 515 && myY >= -15)&&((get(myX,myY+10))!= color (255,255,255)&&(get(myX,myY+10))!= color (255, 0, 128))){
@@ -83,33 +99,33 @@ class SnowFlake
       isMoving = false;
     }
   }
-  void erase()
+  public void erase()
   {
     noStroke();
     fill(0,0,0);
     ellipse(myX,myY,20,20);
 
   }
-  void start(){
+  public void start(){
     noStroke();
     fill(0,0,0);
     ellipse(mouseX,mouseY,20,20);
   }  
-  void stop(){
+  public void stop(){
     //your code here
     //size(7);
     noStroke();
     fill(255,255,255);
     ellipse(mouseX,mouseY,20,20);
   }
-  void move()
+  public void move()
   {
     //your code here
     if(isMoving == true){
       myY++;
     }
   }
-  void wrap()
+  public void wrap()
   {
     //your code here
     if(myY > 500){
@@ -120,3 +136,12 @@ class SnowFlake
 }
 
 
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "SnowflakeCatcher" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
+}
